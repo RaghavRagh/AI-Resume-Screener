@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${HOST:localhost}:${PORT:5432}/${DATABASE:mydatabase}?sslmode=require&channel_binding=require
+    username: ${USER:myuser}
+    password: ${PASSWORD:mypassword}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health,info
