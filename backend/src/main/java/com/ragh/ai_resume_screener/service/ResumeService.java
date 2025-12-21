@@ -1,21 +1,24 @@
 package com.ragh.ai_resume_screener.service;
 
-import com.ragh.ai_resume_screener.model.Resume;
-import com.ragh.ai_resume_screener.repository.ResumeRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ragh.ai_resume_screener.model.Resume;
+
+import lombok.RequiredArgsConstructor;
+import com.ragh.ai_resume_screener.repository.ResumeRepository;
 
 @Service
 @RequiredArgsConstructor
 public class ResumeService {
 
-    private ResumeRepository resumeRepository;
+    private final ResumeRepository resumeRepository;
 
     private static final String UPLOAD_DIR = "uploads/resumes/";
 
@@ -31,7 +34,7 @@ public class ResumeService {
 
         Resume resume = new Resume();
         resume.setFilename(file.getOriginalFilename());
-        resume.setFilePath(filePath);
+        resume.setFilepath(filePath);
         resume.setContentType(file.getContentType());
         resume.setFileSize(file.getSize());
         resume.setUploadedAt(LocalDateTime.now());
