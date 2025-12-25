@@ -27,6 +27,6 @@ public class ResumeController {
         System.out.println("File received: " + file);
         UUID resumeId = resumeService.uploadResume(file);
 
-        return ResponseEntity.ok(Map.of("resumeId", resumeId, "message", "Resume uploaded successfully"));
+        return ResponseEntity.ok(Map.of("resumeId", resumeId, "message", "Resume uploaded successfully!"));
     }
 }

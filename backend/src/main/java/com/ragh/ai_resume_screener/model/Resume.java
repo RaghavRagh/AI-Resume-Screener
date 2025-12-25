@@ -28,5 +28,7 @@ public class Resume {
 
     private Long fileSize;
 
+    private String skills;
+
     private LocalDateTime uploadedAt;
 }
