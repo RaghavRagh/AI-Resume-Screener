@@ -19,6 +19,9 @@ public class JobDescription {
 
     private String title;
 
+    @Enumerated(EnumType.STRING)
+    private JobRole role;
+
     @Column(length = 5000)
     private String description;
 

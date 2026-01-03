@@ -11,6 +11,7 @@ type Job = {
 
 type MatchResult = {
   matchScore: number;
+  confidence: string;
   matchedSkills: string[];
   missingSkills: string[];
 };
@@ -25,7 +26,6 @@ export default function MatchPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // fetch jobs on load
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -34,6 +34,7 @@ export default function MatchPage() {
         );
         setJobs(res.data);
       } catch (err) {
+        console.error(err);
         setError("Failed to load jobs");
       }
     };
@@ -64,6 +65,7 @@ export default function MatchPage() {
 
       setResult(res.data);
     } catch (err) {
+      console.error(err);
       setError("Matching failed");
     } finally {
       setLoading(false);
@@ -74,9 +76,7 @@ export default function MatchPage() {
     <main className="min-h-screen px-6 py-10 max-w-2xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Resume Matcher 🧠</h1>
 
-      <p className="text-sm text-gray-500 mb-4">
-        Resume ID: {resumeId}
-      </p>
+      <p className="text-sm text-gray-500 mb-4">Resume ID: {resumeId}</p>
 
       {/* Job selector */}
       <select
@@ -128,6 +128,10 @@ export default function MatchPage() {
               ))}
             </ul>
           </div>
+
+          <h2 className="text-xl font-semibold">
+            Match Score: {result.matchScore}% — {result.confidence}
+          </h2>
         </div>
       )}
     </main>

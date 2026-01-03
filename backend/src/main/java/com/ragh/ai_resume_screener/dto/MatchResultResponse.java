@@ -12,6 +12,7 @@ import java.util.List;
 public class MatchResultResponse {
 
     private int matchScore;
+    private String confidence;
     private List<String> matchedSkills;
     private List<String> missingSkills;
 }

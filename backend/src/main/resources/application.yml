@@ -4,6 +4,7 @@ spring:
     username: ${USER:myuser}
     password: ${PASSWORD:mypassword}
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -23,3 +24,11 @@ spring:
       enabled: true
       max-file-size: 5MB
       max-request-size: 5MB
+
+ml:
+  service:
+    url: http://localhost:8001/api/extract
+    similarity-url: http://localhost:8001/api/similarity
+
+file:
+  upload-dir: ./uploads/resumes
